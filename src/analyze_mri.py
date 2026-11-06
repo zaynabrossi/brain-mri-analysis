@@ -6,7 +6,7 @@ project_folder = Path(__file__).resolve().parent.parent
 data_path = project_folder/"data"/"example4d.nii.gz"
 img=nib.load(str(data_path))
 brain = img.get_fdata()
-print("Brain shape:", (brain.shape)) #check print statement????
+print("Brain shape:", (brain.shape)) 
 
 volume = brain[:,:,:,0]
 nonzero_voxels = volume[volume>0]
