@@ -6,7 +6,7 @@ project_folder = Path(__file__).resolve().parent.parent
 data_path = project_folder/"data"/"example4d.nii.gz"
 img=nib.load(str(data_path))
 brain = img.get_fdata()
-print(brain.shape)
+print("Brain shape:", (brain.shape)) #check print statement????
 
 volume = brain[:,:,:,0]
 nonzero_voxels = volume[volume>0]
@@ -23,7 +23,7 @@ print("Total voxels:", total_voxels)
 print("Nonzero voxels:", nonzero_count)
 print("Nonzero percentage:", round(nonzero_percentage,2), "%")
 print(volume.shape)
-print(img.affine)
+print(((np.array2string(img.affine, formatter={'float_kind': lambda x:f'{x:.2e}'}))))
 print(nib.aff2axcodes(img.affine))
 
 plt.figure(figsize=(8,5))
@@ -62,3 +62,4 @@ plt.tight_layout()
 plt.savefig(figures_folder/"mri_orthogonal_views.png",
             dpi=300,bbox_inches="tight")
 plt.close()
+
